@@ -1886,11 +1886,19 @@
       min-width: 0;
     }
 
-    .tile.t-venue .venue-cta {
+    .tile.t-venue .venue-ctas {
       flex: 0 0 auto;
       align-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tile.t-venue .venue-cta {
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       padding: 14px 22px;
       background: var(--ink);
@@ -1923,6 +1931,11 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 18px;
+      }
+
+      .tile.t-venue .venue-ctas {
+        align-self: stretch;
+        width: 100%;
       }
 
       .tile.t-venue .venue-cta {
@@ -2921,11 +2934,18 @@
             <div class="v">エイジェックスポーツ科学総合センター<br>室内練習場 / ARROWS栃木</div>
             <div class="addr">TOCHIGI, JAPAN &nbsp;/&nbsp; 室内実施 / 雨天決行</div>
           </div>
-          <a class="venue-cta" href="https://agekke-ssc.com/" target="_blank" rel="noopener"
-            aria-label="エイジェックスポーツ科学総合センター公式サイトへ">
-            <span>公式サイト</span>
-            <span class="arr">↗</span>
-          </a>
+          <div class="venue-ctas">
+            <a class="venue-cta" href="https://agekke-ssc.com/" target="_blank" rel="noopener"
+              aria-label="エイジェックスポーツ科学総合センター公式サイトへ">
+              <span>公式サイト</span>
+              <span class="arr">↗</span>
+            </a>
+            <a class="venue-cta" href="https://www.sports-science.co.jp/facility/tochigi/" target="_blank" rel="noopener"
+              aria-label="ARROWS栃木 公式サイトへ">
+              <span>ARROWS栃木</span>
+              <span class="arr">↗</span>
+            </a>
+          </div>
         </div>
 
       </div>
