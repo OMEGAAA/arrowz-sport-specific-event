@@ -679,6 +679,20 @@
         margin-bottom: 32px;
         box-shadow: 6px 6px 0 var(--crimson);
       }
+
+      .hero-jp {
+        font-size: clamp(26px, 7.2vw, 44px);
+      }
+
+      .hero-jp__prefix {
+        display: block;
+        margin-bottom: .25em;
+      }
+
+      .hero-jp mark {
+        display: inline-block;
+        white-space: nowrap;
+      }
     }
 
     /* ============================================================
@@ -2571,7 +2585,7 @@
       </h1>
 
       <p class="hero-jp reveal d2">
-        第二弾 <mark>競技特化トレーニング</mark><br>
+        <span class="hero-jp__prefix">第二弾</span> <mark>競技特化トレーニング</mark><br>
         野球<span style="color:var(--gold)">走塁</span>編。
       </p>
 
