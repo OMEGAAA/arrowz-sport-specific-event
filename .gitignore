@@ -1,0 +1,10 @@
+# 当日の写真フォルダ(リポジトリには含めない)
+レポート用写真/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/

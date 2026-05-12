@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>競技特化トレーニング 第二弾 — 野球走塁編</title>
-  <meta name="description" content="元プロ野球選手が教える、小学生のための競技特化トレーニング。走塁編 90分。2026.5.10 SUN / エイジェックスポーツ科学総合センター" />
+  <title>[開催レポート] 競技特化トレーニング 第二弾 — 野球走塁編</title>
+  <meta name="description"
+    content="【開催レポート】2026.5.10 SUN に開催。元プロ野球選手が小学生に贈った、走塁特化90分クリニックの記録。エイジェックスポーツ科学総合センター / ARROWS栃木" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2470,6 +2471,541 @@
     }
 
     /* ============================================================
+   FINISHED BADGE (was countdown)
+============================================================ */
+    .countdown.is-finished {
+      background: var(--ink);
+      color: var(--bone);
+      border: 2px solid var(--gold);
+      box-shadow: 10px 10px 0 var(--crimson);
+    }
+
+    .countdown.is-finished .date-en {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: .14em;
+    }
+
+    .countdown.is-finished .sub {
+      color: var(--bone-dim);
+    }
+
+    .countdown.is-finished .timer {
+      border-top: 1px dashed rgba(243, 239, 229, .28);
+    }
+
+    .countdown.is-finished .timer b {
+      color: var(--gold);
+    }
+
+    .countdown.is-finished .timer span {
+      color: rgba(243, 239, 229, .55);
+    }
+
+    /* ============================================================
+   EVENT REPORT (new — recap stats / report)
+============================================================ */
+    .report {
+      position: relative;
+      padding-block: clamp(70px, 9vw, 130px);
+      background:
+        linear-gradient(180deg, rgba(255, 214, 10, .04) 0%, transparent 35%),
+        var(--ink);
+      overflow: hidden;
+    }
+
+    .report::before {
+      content: "RECAP";
+      position: absolute;
+      top: -28px;
+      right: -10px;
+      font-family: var(--display-en);
+      font-size: clamp(120px, 18vw, 260px);
+      line-height: 1;
+      letter-spacing: -.02em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 214, 10, .14);
+      pointer-events: none;
+    }
+
+    .report-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 18px;
+      background: var(--crimson);
+      color: var(--bone);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .report-ribbon::before {
+      content: "●";
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    .report-head {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: end;
+      margin-bottom: clamp(40px, 5vw, 70px);
+    }
+
+    @media (max-width: 820px) {
+      .report-head {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .report-title {
+      font-family: var(--display-ja);
+      font-weight: 900;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+
+    .report-title em {
+      font-family: var(--display-en);
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: -.02em;
+    }
+
+    .report-title .crimson {
+      color: var(--crimson);
+    }
+
+    .report-lead {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--bone-dim);
+    }
+
+    .report-lead strong {
+      color: var(--bone);
+    }
+
+    .report-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(243, 239, 229, .14);
+      border-bottom: 1px solid rgba(243, 239, 229, .14);
+      margin-bottom: clamp(40px, 5vw, 70px);
+    }
+
+    @media (max-width: 820px) {
+      .report-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .report-stat {
+      padding: clamp(24px, 3vw, 40px) clamp(18px, 2vw, 28px);
+      border-right: 1px solid rgba(243, 239, 229, .14);
+      position: relative;
+    }
+
+    .report-stats>.report-stat:last-child {
+      border-right: 0;
+    }
+
+    @media (max-width: 820px) {
+      .report-stat:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .report-stat:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(243, 239, 229, .14);
+      }
+    }
+
+    .report-stat .k {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      margin-bottom: 10px;
+    }
+
+    .report-stat .v {
+      font-family: var(--display-en);
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: .9;
+      letter-spacing: -.02em;
+      color: var(--bone);
+    }
+
+    .report-stat .v em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .report-stat .u {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      margin-top: 8px;
+    }
+
+    .report-stat.is-tbd .v {
+      color: rgba(243, 239, 229, .35);
+    }
+
+    .report-photos {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .report-photos {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 180px 180px 180px;
+      }
+    }
+
+    .report-photo {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink-2);
+    }
+
+    .report-photo:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    @media (max-width: 820px) {
+      .report-photo:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+
+    .report-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .report-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .report-photo figcaption {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      background: rgba(10, 10, 10, .72);
+      backdrop-filter: blur(8px);
+      color: var(--bone);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+   FLOWING GALLERY (recap marquee)
+============================================================ */
+    .fl-gallery {
+      background: var(--ink);
+      padding-block: clamp(50px, 7vw, 90px);
+      overflow: hidden;
+      border-top: 1px solid rgba(243, 239, 229, .14);
+      border-bottom: 1px solid rgba(243, 239, 229, .14);
+      position: relative;
+    }
+
+    .fl-gallery-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      padding-inline: var(--gutter);
+      max-width: var(--maxw);
+      margin-inline: auto;
+      margin-bottom: clamp(28px, 4vw, 48px);
+      flex-wrap: wrap;
+    }
+
+    .fl-gallery-title {
+      font-family: var(--display-en);
+      font-size: clamp(40px, 5.5vw, 80px);
+      line-height: .88;
+      letter-spacing: -.02em;
+      color: var(--bone);
+    }
+
+    .fl-gallery-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .fl-gallery-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      text-align: right;
+      line-height: 1.9;
+    }
+
+    .fl-gallery-meta b {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .fl-marquee {
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      width: 100%;
+      cursor: grab;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+      /* Prevent vertical scroll capture on mobile */
+      touch-action: pan-x;
+    }
+
+    .fl-marquee::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fl-marquee.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .fl-marquee+.fl-marquee {
+      margin-top: 14px;
+    }
+
+    .fl-marquee__track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      will-change: scroll-position;
+    }
+
+    .fl-item {
+      position: relative;
+      flex: 0 0 auto;
+      width: clamp(220px, 26vw, 340px);
+      aspect-ratio: 4 / 3;
+      background: var(--ink-2);
+      overflow: hidden;
+      cursor: zoom-in;
+      user-select: none;
+    }
+
+    .fl-marquee.is-dragging .fl-item {
+      cursor: grabbing;
+    }
+
+    .fl-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 0 var(--gold);
+      transition: box-shadow .25s;
+      pointer-events: none;
+    }
+
+    .fl-item:hover::after,
+    .fl-item:focus-visible::after {
+      box-shadow: inset 0 0 0 2px var(--gold);
+    }
+
+    .fl-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.2, .8, .2, 1), filter .4s;
+      filter: brightness(.92) saturate(1.05);
+    }
+
+    .fl-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.05) saturate(1.12);
+    }
+
+    .fl-item__num {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      padding: 4px 8px;
+      background: rgba(10, 10, 10, .72);
+      backdrop-filter: blur(8px);
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .2em;
+      pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+      .fl-marquee__track {
+        animation-duration: 55s;
+        gap: 10px;
+      }
+
+      .fl-marquee--reverse .fl-marquee__track {
+        animation-duration: 65s;
+      }
+
+      .fl-item {
+        width: 200px;
+      }
+
+      .fl-gallery-meta {
+        text-align: left;
+      }
+    }
+
+    /* ============================================================
+   LIGHTBOX (click to enlarge)
+============================================================ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, .94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(20px, 4vw, 60px);
+      opacity: 0;
+      transition: opacity .28s ease;
+    }
+
+    .lightbox.is-open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox__img {
+      max-width: min(96vw, 1400px);
+      max-height: 86vh;
+      object-fit: contain;
+      user-select: none;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+      animation: lbZoom .35s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    @keyframes lbZoom {
+      from {
+        opacity: 0;
+        transform: scale(.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .lightbox__btn {
+      position: absolute;
+      background: rgba(243, 239, 229, .06);
+      color: var(--bone);
+      border: 1px solid rgba(243, 239, 229, .25);
+      padding: 12px 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s, transform .2s;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox__btn:hover,
+    .lightbox__btn:focus-visible {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    .lightbox__close {
+      top: clamp(16px, 2.5vw, 28px);
+      right: clamp(16px, 2.5vw, 28px);
+    }
+
+    .lightbox__nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      padding: 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox__nav:hover {
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .lightbox__nav--prev {
+      left: clamp(12px, 2vw, 28px);
+    }
+
+    .lightbox__nav--next {
+      right: clamp(12px, 2vw, 28px);
+    }
+
+    .lightbox__counter {
+      position: absolute;
+      bottom: clamp(16px, 3vw, 30px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .26em;
+      color: var(--bone-dim);
+      padding: 8px 14px;
+      background: rgba(10, 10, 10, .5);
+      border: 1px solid rgba(243, 239, 229, .14);
+    }
+
+    @media (max-width: 540px) {
+      .lightbox__nav {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+      }
+
+      .lightbox__close {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+    }
+
+    body.lb-open {
+      overflow: hidden;
+    }
+
+    /* ============================================================
    REVEAL ANIMATIONS
 ============================================================ */
     .reveal {
@@ -2526,16 +3062,15 @@
         </span>
       </a>
       <nav class="nav-links" aria-label="メインナビゲーション">
+        <a href="#report">レポート</a>
         <a href="#concept">コンセプト</a>
         <a href="#training">プログラム</a>
         <a href="#coaches">コーチ</a>
         <a href="#gallery">ギャラリー</a>
-        <a href="#details">詳細</a>
-        <a href="#howto">申し込み</a>
+        <a href="#details">開催概要</a>
         <a href="#poster">ポスター</a>
       </nav>
-      <a href="https://center-agk-sp-science.hacomono.jp/home?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnRnULhGYTL7WHm2hQz5wmd8dlOPJsijUxtNZgqUL-D78jMtpYUdhLXsrg7Ww_aem_8VvEqq6L_L0Y0SwqdBcc9Q&utm_id=97760_v0_s00_e0_tv3_a1denngkml3b68"
-        class="nav-cta" target="_blank" rel="noopener">参加申込</a>
+      <a href="#report" class="nav-cta" aria-label="開催レポートへ">レポート</a>
     </div>
   </header>
 
@@ -2554,26 +3089,26 @@
 
       <div class="hero-meta">
         <span><i></i>COMPETITION-SPECIFIC TRAINING / VOL.02</span>
-        <span>BASE RUNNING — THE ART OF VELOCITY</span>
+        <span>EVENT REPORT — BASE RUNNING / RECAP</span>
         <span>栃木, JAPAN &nbsp;/&nbsp; ISSUE&nbsp;02</span>
       </div>
 
-      <!-- countdown -->
-      <aside class="countdown" aria-label="開催日カウントダウン">
-        <div class="date-en">SUN / MAY</div>
+      <!-- finished badge (was: countdown) -->
+      <aside class="countdown is-finished" aria-label="開催終了バッジ">
+        <div class="date-en">EVENT FINISHED</div>
         <div class="big">5.10</div>
-        <div class="sub">開催まであと</div>
-        <div class="timer" id="timer" aria-live="polite">
-          <div><b id="cd-d">--</b><span>Days</span></div>
-          <div><b id="cd-h">--</b><span>Hrs</span></div>
-          <div><b id="cd-m">--</b><span>Min</span></div>
-          <div><b id="cd-s">--</b><span>Sec</span></div>
+        <div class="sub">SUN · MAY · 2026 / 開催終了</div>
+        <div class="timer is-finished" aria-live="polite">
+          <div><b>02</b><span>Sessions</span></div>
+          <div><b>90</b><span>Min / ea</span></div>
+          <div><b>02</b><span>Coaches</span></div>
+          <div><b>✓</b><span>Done</span></div>
         </div>
       </aside>
 
       <div class="hero-chapter reveal">
         <div class="num">02</div>
-        <div class="tag">VOLUME TWO / BASE-RUNNING EDITION</div>
+        <div class="tag">RECAP · VOL.02 BASE-RUNNING EDITION</div>
       </div>
 
       <h1 class="hero-title reveal d1">
@@ -2586,14 +3121,14 @@
 
       <p class="hero-jp reveal d2">
         <span class="hero-jp__prefix">第二弾</span> <mark>競技特化トレーニング</mark><br>
-        野球<span style="color:var(--gold)">走塁</span>編。
+        野球<span style="color:var(--gold)">走塁</span>編 <span style="color:var(--crimson)">— 開催レポート</span>
       </p>
 
       <div class="hero-bottom">
         <p class="lead reveal d3">
-          <strong>元プロ野球選手が、90分で教える。</strong>
+          <strong>2026年5月10日(日)、無事に開催しました。</strong>
           一歩目の初速、股関節主導の構え、前傾姿勢で低く速く出るスタート技術。
-          ベースを駆け抜ける子どもたちのために、現場で使える「走塁」を体に刻むエリートクリニック。
+          ベースを駆け抜ける子どもたちのために、現場で使える「走塁」を体に刻んだ90分の記録。
         </p>
         <div class="hero-stat reveal d3">
           <div class="k">Session Length</div>
@@ -2611,12 +3146,115 @@
   <!-- =============== TICKER =============== -->
   <div class="ticker" role="presentation" aria-hidden="true">
     <div class="ticker__track">
-      <span>BASE RUNNING <i></i> 0.01sec FASTER <i></i> 5.10 SUN <i></i> POWERED BY EX-PRO <i></i> 90&nbsp;MINUTES
-        <i></i> STOLEN&nbsp;BASE </span>
-      <span>BASE RUNNING <i></i> 0.01sec FASTER <i></i> 5.10 SUN <i></i> POWERED BY EX-PRO <i></i> 90&nbsp;MINUTES
-        <i></i> STOLEN&nbsp;BASE </span>
+      <span>EVENT FINISHED <i></i> 5.10 SUN · RECAP <i></i> THANK YOU <i></i> POWERED BY EX-PRO <i></i> 90&nbsp;MINUTES
+        <i></i> VOL.03 COMING SOON </span>
+      <span>EVENT FINISHED <i></i> 5.10 SUN · RECAP <i></i> THANK YOU <i></i> POWERED BY EX-PRO <i></i> 90&nbsp;MINUTES
+        <i></i> VOL.03 COMING SOON </span>
     </div>
   </div>
+
+  <!-- =============== EVENT REPORT (recap) =============== -->
+  <section class="report" id="report" aria-label="開催レポート">
+    <div class="container">
+      <div class="reveal">
+        <span class="report-ribbon">EVENT FINISHED · 開催レポート</span>
+      </div>
+
+      <div class="report-head">
+        <h2 class="report-title reveal d1">
+          <em>VOL.02</em> 走塁編、<br>
+          <span class="crimson">無事終了。</span>
+        </h2>
+        <p class="report-lead reveal d2">
+          <strong>2026年5月10日(日)</strong>、エイジェックスポーツ科学総合センター(ARROWS栃木) 室内練習場にて、競技特化トレーニング 第二弾「野球走塁編」を開催しました。<br>
+          ご参加いただいた皆さま、保護者の皆さま、ありがとうございました。
+        </p>
+      </div>
+
+      <!-- TODO: 数字を差し替え（参加人数・満足度など）。仮値はプレースホルダーです -->
+      <div class="report-stats reveal d1">
+        <div class="report-stat">
+          <div class="k">Date</div>
+          <div class="v">5.10</div>
+          <div class="u">2026 / SUN</div>
+        </div>
+        <div class="report-stat">
+          <div class="k">Sessions</div>
+          <div class="v"><em>02</em></div>
+          <div class="u">14:00 · 16:00</div>
+        </div>
+        <div class="report-stat is-tbd">
+          <div class="k">Participants</div>
+          <div class="v">12</div>
+          <div class="u">小学生 / G1—G6</div>
+        </div>
+        <div class="report-stat is-tbd">
+          <div class="k">Satisfaction</div>
+          <div class="v">--<span style="font-size:.5em">%</span></div>
+          <div class="u">アンケート集計</div>
+        </div>
+      </div>
+
+      <!--
+        レポート上部のキー写真5枚。差し替えたい場合は src を「レポート用写真/」内の別ファイルに変更してください。
+      -->
+      <div class="report-photos reveal d2">
+        <figure class="report-photo">
+          <img src="レポート用写真/IMG_0191.jpeg" alt="元プロ・川相コーチと子どもたちの輪 — 現場で直接指導"
+            loading="lazy" style="object-position: center 40%;">
+          <figcaption>01 · Coaching</figcaption>
+        </figure>
+        <figure class="report-photo">
+          <img src="レポート用写真/IMG_0225.jpeg" alt="大久保コーチと一対一で構えの基礎を学ぶ"
+            loading="lazy" style="object-position: center 35%;">
+          <figcaption>02 · Stance</figcaption>
+        </figure>
+        <figure class="report-photo">
+          <img src="レポート用写真/IMG_0091.jpeg" alt="走りのフォームを実演で示すコーチ"
+            loading="lazy" style="object-position: center 45%;">
+          <figcaption>03 · Form Demo</figcaption>
+        </figure>
+        <figure class="report-photo">
+          <img src="レポート用写真/IMG_0023.jpeg" alt="動きづくりのウォームアップ — コーチも一緒に"
+            loading="lazy" style="object-position: center 55%;">
+          <figcaption>04 · Warm-Up</figcaption>
+        </figure>
+        <figure class="report-photo">
+          <img src="レポート用写真/IMG_0034.jpeg" alt="スタートダッシュの構えを指導"
+            loading="lazy" style="object-position: center 50%;">
+          <figcaption>05 · Start</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FLOWING GALLERY (recap marquee) =============== -->
+  <!--
+    当日の写真(133枚)を上下二段のマーキーで流します。
+    写真は `レポート用写真/` フォルダ内のファイルを参照しています。
+    写真を追加/削除する場合は <script> 内の PHOTOS 配列を編集してください。
+    クリックで拡大表示、ドラッグ/スワイプで左右にスクロール可能。
+  -->
+  <section class="fl-gallery" id="recap-gallery" aria-label="開催当日 写真ギャラリー">
+    <div class="fl-gallery-head">
+      <h2 class="fl-gallery-title reveal">
+        <em>RECAP</em><br>GALLERY.
+      </h2>
+      <div class="fl-gallery-meta reveal d1">
+        DAY-OF PHOTOS &nbsp;/&nbsp; <b>133 FRAMES</b><br>
+        2026.5.10 SUN &nbsp;/&nbsp; TOCHIGI, JP<br>
+        <span style="color:var(--gold)">TAP / CLICK</span> TO ENLARGE &nbsp;·&nbsp; DRAG TO SCROLL
+      </div>
+    </div>
+
+    <div class="fl-marquee" data-row="A" aria-label="ギャラリー 上段">
+      <div class="fl-marquee__track"></div>
+    </div>
+
+    <div class="fl-marquee fl-marquee--reverse" data-row="B" aria-label="ギャラリー 下段">
+      <div class="fl-marquee__track"></div>
+    </div>
+  </section>
 
   <!-- =============== CONCEPT =============== -->
   <section class="concept" id="concept" aria-label="コンセプト">
@@ -2901,7 +3539,7 @@
         <span class="idx">05 / 05</span>
       </div>
       <h2 class="section-title reveal d1">
-        <em>FACTS</em> &nbsp;/&nbsp; 開催概要
+        <em>FACTS</em> &nbsp;/&nbsp; 開催概要(実施済)
       </h2>
 
       <div class="detail-grid">
@@ -2954,8 +3592,8 @@
               <span>公式サイト</span>
               <span class="arr">↗</span>
             </a>
-            <a class="venue-cta" href="https://www.sports-science.co.jp/facility/tochigi/" target="_blank" rel="noopener"
-              aria-label="ARROWS栃木 公式サイトへ">
+            <a class="venue-cta" href="https://www.sports-science.co.jp/facility/tochigi/" target="_blank"
+              rel="noopener" aria-label="ARROWS栃木 公式サイトへ">
               <span>ARROWS栃木</span>
               <span class="arr">↗</span>
             </a>
@@ -2966,8 +3604,8 @@
     </div>
   </section>
 
-  <!-- =============== HOW TO BOOK =============== -->
-  <section class="howto" id="howto" aria-label="予約方法">
+  <!-- =============== HOW TO BOOK (archived — event ended) =============== -->
+  <section class="howto" id="howto" aria-label="予約方法(参考)" hidden>
     <div class="container">
       <div class="eyebrow reveal">
         <span class="ln"></span>
@@ -3036,8 +3674,8 @@
     </div>
   </section>
 
-  <!-- =============== NOTES =============== -->
-  <section class="notes" aria-label="注意事項">
+  <!-- =============== NOTES (archived — was booking caveats) =============== -->
+  <section class="notes" aria-label="注意事項(参考)" hidden>
     <div class="container wrap">
       <div class="caution reveal">
         CAUTION<br>
@@ -3085,31 +3723,33 @@
     </div>
   </section>
 
-  <!-- =============== CTA =============== -->
-  <section class="cta" id="cta" aria-label="参加申込">
-    <div class="cta-ghost" aria-hidden="true">BOOK&nbsp;NOW</div>
+  <!-- =============== CTA / THANK YOU + NEXT =============== -->
+  <section class="cta" id="cta" aria-label="お礼・次回告知">
+    <div class="cta-ghost" aria-hidden="true">THANK&nbsp;YOU</div>
     <div class="container cta-inner">
-      <div class="cta-eyebrow reveal">LIMITED TO 20 SEATS · 先着順</div>
+      <div class="cta-eyebrow reveal">EVENT FINISHED · 開催完了</div>
       <h2 class="reveal d1">
-        BE<br>
-        <em>FASTER.</em>
+        THANK<br>
+        <em>YOU.</em>
       </h2>
       <p class="cta-jp reveal d2">
-        一歩目を、変える。<br>
-        いま、申し込む。
+        ご参加いただき、<br>
+        ありがとうございました。
       </p>
 
-      <a class="btn-book reveal d3"
-        href="https://center-agk-sp-science.hacomono.jp/home?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnRnULhGYTL7WHm2hQz5wmd8dlOPJsijUxtNZgqUL-D78jMtpYUdhLXsrg7Ww_aem_8VvEqq6L_L0Y0SwqdBcc9Q&utm_id=97760_v0_s00_e0_tv3_a1denngkml3b68"
-        target="_blank" rel="noopener" aria-label="オンラインで参加申込">
-        <span>参加申込</span>
-        <span class="arr">↗</span>
-      </a>
+      <div class="reveal d3"
+        style="margin-block: clamp(28px, 4vw, 48px); display:inline-flex; align-items:center; gap:18px; padding: 18px 28px; background: rgba(243, 239, 229, .06); border: 1px dashed rgba(255, 214, 10, .4);">
+        <span
+          style="font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);">VOL.03</span>
+        <span
+          style="font-family: var(--display-ja); font-weight: 700; font-size: clamp(15px, 1.4vw, 18px);">第三弾、近日公開。</span>
+      </div>
 
       <div class="cta-sub reveal d4">
         <a href="tel:0282258288">TEL · 0282-25-8288</a>
-        <span>電話でのお問合わせは <b>こちら</b></span>
-        <a href="#howto">予約の仕方</a>
+        <span>お問合わせは <b>こちら</b></span>
+        <a href="https://www.instagram.com/arrowz_tochigi/" target="_blank" rel="noopener">Instagram ·
+          @arrowz_tochigi</a>
       </div>
     </div>
   </section>
@@ -3138,18 +3778,27 @@
           <h5>Series</h5>
           <ul>
             <li>Vol.01 · 走り方編 (完了)</li>
-            <li style="color:var(--gold)">Vol.02 · 走塁編 <span style="color:var(--crimson)">NOW</span></li>
-            <li>Vol.03 · 未定 (Coming soon)</li>
+            <li>Vol.02 · 走塁編 <span style="color:var(--bone-dim)">(完了)</span></li>
+            <li style="color:var(--gold)">Vol.03 · <span style="color:var(--crimson)">近日公開</span></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bot">
         <span>© 2026 AGEKKE SPORTS SCIENCE. ALL RIGHTS RESERVED.</span>
-        <span>ISSUE&nbsp;02 · RUN · FAST · STEAL · FASTER</span>
+        <span>ISSUE&nbsp;02 · RECAP · THANK&nbsp;YOU · VOL.03&nbsp;SOON</span>
       </div>
     </div>
   </footer>
+
+  <!-- =============== LIGHTBOX (click-to-enlarge) =============== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="写真拡大表示" aria-hidden="true">
+    <button class="lightbox__btn lightbox__close" id="lb-close" aria-label="閉じる">CLOSE ✕</button>
+    <button class="lightbox__btn lightbox__nav lightbox__nav--prev" id="lb-prev" aria-label="前の写真">‹</button>
+    <img class="lightbox__img" id="lb-img" alt="" draggable="false">
+    <button class="lightbox__btn lightbox__nav lightbox__nav--next" id="lb-next" aria-label="次の写真">›</button>
+    <div class="lightbox__counter" id="lb-counter">-- / --</div>
+  </div>
 
   <script>
     /* Reveal on scroll */
@@ -3163,31 +3812,273 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* Countdown to 2026-05-10 14:00 local */
+    /* Countdown removed — event finished 2026-05-10. */
+
+    /* Flowing gallery — build marquee, manual scroll, auto-scroll, lightbox.
+       写真は `レポート用写真/` フォルダ内のファイル。
+       写真を追加/削除する場合は PHOTOS 配列を更新してください。 */
     (function () {
-      const target = new Date('2026-05-10T14:00:00+09:00').getTime();
-      const d = document.getElementById('cd-d');
-      const h = document.getElementById('cd-h');
-      const m = document.getElementById('cd-m');
-      const s = document.getElementById('cd-s');
-      const pad = n => String(Math.max(0, n)).padStart(2, '0');
-      function tick() {
-        const diff = target - Date.now();
-        if (diff <= 0) {
-          d.textContent = h.textContent = m.textContent = s.textContent = '00';
-          return;
-        }
-        const dd = Math.floor(diff / 86400000);
-        const hh = Math.floor((diff % 86400000) / 3600000);
-        const mm = Math.floor((diff % 3600000) / 60000);
-        const ss = Math.floor((diff % 60000) / 1000);
-        d.textContent = pad(dd);
-        h.textContent = pad(hh);
-        m.textContent = pad(mm);
-        s.textContent = pad(ss);
+      const FOLDER = 'レポート用写真/';
+      const PHOTOS = [
+        'IMG_0007.jpeg', 'IMG_0008.jpeg', 'IMG_0010.jpeg', 'IMG_0011.jpeg', 'IMG_0012.jpeg',
+        'IMG_0013.jpeg', 'IMG_0014.jpeg', 'IMG_0015.jpeg', 'IMG_0016.jpeg', 'IMG_0017.jpeg',
+        'IMG_0018.jpeg', 'IMG_0019.jpeg', 'IMG_0021.jpeg', 'IMG_0022.jpeg', 'IMG_0023.jpeg',
+        'IMG_0028.jpeg', 'IMG_0029.jpeg', 'IMG_0030.jpeg', 'IMG_0031.jpeg', 'IMG_0034.jpeg',
+        'IMG_0035.jpeg', 'IMG_0036.jpeg', 'IMG_0037.jpeg', 'IMG_0040.jpeg', 'IMG_0041.jpeg',
+        'IMG_0045.jpeg', 'IMG_0046.jpeg', 'IMG_0048.jpeg', 'IMG_0049.jpeg', 'IMG_0053.jpeg',
+        'IMG_0054.jpeg', 'IMG_0059.jpeg', 'IMG_0060.jpeg', 'IMG_0061.jpeg', 'IMG_0062.jpeg',
+        'IMG_0063.jpeg', 'IMG_0073.jpeg', 'IMG_0079.jpeg', 'IMG_0086.jpeg', 'IMG_0087.jpeg',
+        'IMG_0088.jpeg', 'IMG_0090.jpeg', 'IMG_0091.jpeg', 'IMG_0093.jpeg', 'IMG_0094.jpeg',
+        'IMG_0099.jpeg', 'IMG_0100.jpeg', 'IMG_0103.jpeg', 'IMG_0104.jpeg', 'IMG_0105.jpeg',
+        'IMG_0106.jpeg', 'IMG_0107.jpeg', 'IMG_0108.jpeg', 'IMG_0110.jpeg', 'IMG_0111.jpeg',
+        'IMG_0112.jpeg', 'IMG_0113.jpeg', 'IMG_0114.jpeg', 'IMG_0115.jpeg', 'IMG_0118.jpeg',
+        'IMG_0119.jpeg', 'IMG_0120.jpeg', 'IMG_0121.jpeg', 'IMG_0122.jpeg', 'IMG_0126.jpeg',
+        'IMG_0129.jpeg', 'IMG_0130.jpeg', 'IMG_0131.jpeg', 'IMG_0132.jpeg', 'IMG_0134.jpeg',
+        'IMG_0135.jpeg', 'IMG_0136.jpeg', 'IMG_0139.jpeg', 'IMG_0140.jpeg', 'IMG_0142.jpeg',
+        'IMG_0144.jpeg', 'IMG_0145.jpeg', 'IMG_0146.jpeg', 'IMG_0148.jpeg', 'IMG_0149.jpeg',
+        'IMG_0150.jpeg', 'IMG_0153.jpeg', 'IMG_0158.jpeg', 'IMG_0159.jpeg', 'IMG_0160.jpeg',
+        'IMG_0161.jpeg', 'IMG_0165.jpeg', 'IMG_0166.jpeg', 'IMG_0169.jpeg', 'IMG_0178.jpeg',
+        'IMG_0179.jpeg', 'IMG_0181.jpeg', 'IMG_0191.jpeg', 'IMG_0192.jpeg', 'IMG_0223.jpeg',
+        'IMG_0224.jpeg', 'IMG_0225.jpeg', 'IMG_0226.jpeg', 'IMG_0227.jpeg', 'IMG_0228.jpeg',
+        'IMG_0230.jpeg', 'IMG_0231.jpeg', 'IMG_0232.jpeg', 'IMG_0233.jpeg', 'IMG_0234.jpeg',
+        'IMG_0235.jpeg', 'IMG_0236.jpeg', 'IMG_0237.jpeg', 'IMG_0238.jpeg', 'IMG_0239.jpeg',
+        'IMG_0245.jpeg', 'IMG_0246.jpeg', 'IMG_0247.jpeg', 'IMG_0249.jpeg', 'IMG_0254.jpeg',
+        'IMG_0255.jpeg', 'IMG_0256.jpeg', 'IMG_0257.jpeg', 'IMG_0260.jpeg', 'IMG_0261.jpeg',
+        'IMG_0262.jpeg', 'IMG_0264.jpeg', 'IMG_0265.jpeg', 'IMG_0270.jpeg', 'IMG_0271.jpeg',
+        'IMG_0272.jpeg', 'IMG_0273.jpeg', 'IMG_0274.jpeg', 'IMG_0275.jpeg', 'IMG_0276.jpeg',
+        'IMG_0277.jpeg', 'IMG_0278.jpeg', 'IMG_0279.jpeg'
+      ];
+      const TOTAL = PHOTOS.length;            // 総枚数 (PHOTOSを編集すれば自動反映)
+      const SPLIT = Math.ceil(TOTAL / 2);     // 上段の枚数。残りは下段
+      const AUTO_SPEED = 0.5;                 // 自動スクロール速度 (px/frame, 60fps≈30px/s)
+      const PAUSE_AFTER_INTERACT = 2800;      // 操作後に自動再開するまで(ms)
+
+      function photoUrl(n) {
+        return FOLDER + PHOTOS[n - 1];
       }
-      tick();
-      setInterval(tick, 1000);
+
+      function buildItem(n) {
+        const num = String(n).padStart(2, '0');
+        const fig = document.createElement('figure');
+        fig.className = 'fl-item';
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'button');
+        fig.setAttribute('aria-label', '写真 ' + num + ' を拡大表示');
+        fig.dataset.idx = String(n);
+        fig.innerHTML =
+          '<img src="' + photoUrl(n) + '" alt="当日の様子 ' + num + '" loading="lazy" draggable="false">' +
+          '<span class="fl-item__num">' + num + '</span>';
+        return fig;
+      }
+
+      function fillTrack(track, fromN, toN) {
+        const frag = document.createDocumentFragment();
+        // Duplicate content twice for seamless loop
+        for (let pass = 0; pass < 2; pass++) {
+          for (let i = fromN; i <= toN; i++) frag.appendChild(buildItem(i));
+        }
+        track.appendChild(frag);
+      }
+
+      const marqueeA = document.querySelector('[data-row="A"]');
+      const marqueeB = document.querySelector('[data-row="B"]');
+      if (!marqueeA || !marqueeB) return;
+
+      fillTrack(marqueeA.querySelector('.fl-marquee__track'), 1, SPLIT);
+      fillTrack(marqueeB.querySelector('.fl-marquee__track'), SPLIT + 1, TOTAL);
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Auto-scroll + manual scroll controller
+      function attachMarquee(m, reverse) {
+        const speed = reverse ? -AUTO_SPEED : AUTO_SPEED;
+        let paused = reduceMotion;
+        let pauseTimer = null;
+
+        function pauseFor(ms) {
+          paused = true;
+          clearTimeout(pauseTimer);
+          pauseTimer = setTimeout(() => { paused = false; }, ms || PAUSE_AFTER_INTERACT);
+        }
+
+        function pauseHold() {
+          paused = true;
+          clearTimeout(pauseTimer);
+        }
+
+        function setInitial() {
+          if (reverse) {
+            m.scrollLeft = m.scrollWidth / 2;
+          }
+        }
+        // wait one frame so scrollWidth is computed
+        requestAnimationFrame(setInitial);
+
+        function tick() {
+          if (!paused && m.scrollWidth > m.clientWidth) {
+            m.scrollLeft += speed;
+          }
+          const half = m.scrollWidth / 2;
+          if (m.scrollLeft >= half) m.scrollLeft -= half;
+          else if (m.scrollLeft <= 0) m.scrollLeft += half;
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        // Hover pause
+        m.addEventListener('mouseenter', pauseHold);
+        m.addEventListener('mouseleave', () => { if (!reduceMotion) paused = false; });
+        m.addEventListener('focusin', pauseHold);
+        m.addEventListener('focusout', () => { if (!reduceMotion) paused = false; });
+
+        // Wheel/touch — resume after timeout
+        m.addEventListener('wheel', () => pauseFor(), { passive: true });
+        m.addEventListener('touchstart', pauseHold, { passive: true });
+        m.addEventListener('touchend', () => pauseFor(), { passive: true });
+        m.addEventListener('touchcancel', () => pauseFor(), { passive: true });
+
+        // Mouse drag-to-scroll
+        let isDown = false, startX = 0, startScroll = 0, moved = 0;
+        m.addEventListener('mousedown', (e) => {
+          isDown = true;
+          moved = 0;
+          startX = e.pageX;
+          startScroll = m.scrollLeft;
+          m.classList.add('is-dragging');
+          pauseHold();
+        });
+        window.addEventListener('mouseup', () => {
+          if (!isDown) return;
+          isDown = false;
+          m.classList.remove('is-dragging');
+          pauseFor();
+        });
+        m.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          const dx = e.pageX - startX;
+          moved = Math.abs(dx);
+          if (moved > 4) {
+            e.preventDefault();
+            m.scrollLeft = startScroll - dx;
+          }
+        });
+        // Block click after drag
+        m.addEventListener('click', (e) => {
+          if (moved > 4) {
+            e.preventDefault();
+            e.stopPropagation();
+            moved = 0;
+          }
+        }, true);
+      }
+
+      attachMarquee(marqueeA, false);
+      attachMarquee(marqueeB, true);
+
+      // ============ LIGHTBOX ============
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbCounter = document.getElementById('lb-counter');
+      const lbClose = document.getElementById('lb-close');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+      let currentIdx = 1;
+
+      function getSrcForIdx(n) {
+        // Find a rendered item with this idx and read its actual <img> src
+        // (handles fallbacks transparently — uses whichever image is currently displayed)
+        const el = document.querySelector('.fl-item[data-idx="' + n + '"] img');
+        return el ? el.currentSrc || el.src : '';
+      }
+
+      function getAltForIdx(n) {
+        const el = document.querySelector('.fl-item[data-idx="' + n + '"] img');
+        return el ? (el.alt || '') : '';
+      }
+
+      function render() {
+        const src = getSrcForIdx(currentIdx);
+        if (!src) return;
+        lbImg.src = src;
+        lbImg.alt = getAltForIdx(currentIdx);
+        lbCounter.textContent =
+          String(currentIdx).padStart(2, '0') + ' / ' + String(TOTAL).padStart(2, '0');
+        // Restart zoom-in animation each time
+        lbImg.style.animation = 'none';
+        // force reflow
+        // eslint-disable-next-line no-unused-expressions
+        lbImg.offsetWidth;
+        lbImg.style.animation = '';
+      }
+
+      function open(n) {
+        currentIdx = n;
+        render();
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lb-open');
+      }
+
+      function close() {
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lb-open');
+      }
+
+      function next() {
+        currentIdx = currentIdx >= TOTAL ? 1 : currentIdx + 1;
+        render();
+      }
+
+      function prev() {
+        currentIdx = currentIdx <= 1 ? TOTAL : currentIdx - 1;
+        render();
+      }
+
+      // Delegated click to open
+      document.querySelectorAll('.fl-marquee').forEach(m => {
+        m.addEventListener('click', (e) => {
+          const item = e.target.closest('.fl-item');
+          if (!item) return;
+          const idx = parseInt(item.dataset.idx, 10);
+          if (!isNaN(idx)) open(idx);
+        });
+        // Keyboard: Enter / Space on focused item
+        m.addEventListener('keydown', (e) => {
+          const item = e.target.closest('.fl-item');
+          if (!item) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const idx = parseInt(item.dataset.idx, 10);
+            if (!isNaN(idx)) open(idx);
+          }
+        });
+      });
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click', prev);
+      lbNext.addEventListener('click', next);
+      lb.addEventListener('click', (e) => {
+        if (e.target === lb) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') prev();
+        else if (e.key === 'ArrowRight') next();
+      });
+
+      // Touch swipe in lightbox (mobile)
+      let lbTouchX = 0;
+      lbImg.addEventListener('touchstart', (e) => {
+        lbTouchX = e.changedTouches[0].pageX;
+      }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].pageX - lbTouchX;
+        if (Math.abs(dx) > 50) {
+          if (dx < 0) next(); else prev();
+        }
+      }, { passive: true });
     })();
   </script>
 
